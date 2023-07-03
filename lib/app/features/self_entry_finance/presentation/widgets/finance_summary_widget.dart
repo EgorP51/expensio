@@ -18,7 +18,7 @@ class FinanceSummaryWidget extends StatelessWidget {
     return SizedBox(
       height: 80,
       child: Column(
-        children: [
+        children: <Widget>[
           const ExpensioDivider(),
           Expanded(
             child: Row(

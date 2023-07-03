@@ -1,3 +1,4 @@
+import 'package:expensio/app/features/qr_code_reader/utils/qr_code_formater.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_qr_bar_scanner/qr_bar_scanner_camera.dart';
 
@@ -42,7 +43,11 @@ class _QRCodeReaderWidgetState extends State<QRCodeReaderWidget> {
         },
         child: ColoredBox(
           color: Colors.green,
-          child: Text(_qrInfo!),
+          child: Center(
+            child: Text(
+              QRCodeFormater().getPriceFromQRCode(_qrInfo!) ?? '- - -',
+            ),
+          ),
         ),
       );
     } else {

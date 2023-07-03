@@ -6,12 +6,14 @@ class QRCodeReaderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Align(
-        alignment: const Alignment(0, -0.3),
-        child: SizedBox.square(dimension: 250, child: QRCodeReaderWidget()),
+        alignment: Alignment(0, -0.3),
+        child: SizedBox.square(
+          dimension: 250,
+          child: QRCodeReaderWidget(),
+        ),
       ),
     );
   }
 }
-
