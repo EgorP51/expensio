@@ -1,4 +1,5 @@
 import 'package:expensio/app/features/qr_code_reader/presentation/screens/qr_code_reader_screen.dart';
+import 'package:expensio/app/features/self_entry_finance/presentation/screens/self_entry_finance_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: QRCodeReaderScreen(),
+      home: SelfEntryFinanceScreen(),
     );
   }
 }
