@@ -1,18 +1,29 @@
+import 'package:expensio/app/core/navigation/app_router.dart';
 import 'package:expensio/app/features/qr_code_reader/presentation/screens/qr_code_reader_screen.dart';
-import 'package:expensio/app/features/self_entry_finance/presentation/screens/self_entry_finance_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late final AppRouter _appRouter;
+  @override
+  void initState() {
+    super.initState();
+    _appRouter = AppRouter();
+  }
+  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: QRCodeReaderScreen()
+    return MaterialApp.router(
+      routerConfig: _appRouter.config(),
     );
   }
 }

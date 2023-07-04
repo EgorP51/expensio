@@ -1,10 +1,17 @@
+import 'package:auto_route/annotations.dart';
 import 'package:expensio/app/features/self_entry_finance/presentation/widgets/budget_entry_buttons.dart';
 import 'package:expensio/app/features/self_entry_finance/presentation/widgets/finance_summary_widget.dart';
 import 'package:flutter/material.dart';
 
-class SelfEntryFinanceScreen extends StatelessWidget {
-  const SelfEntryFinanceScreen({Key? key}) : super(key: key);
+@RoutePage(name: 'SelfEntryFinanceRoute')
+class SelfEntryFinanceScreen extends StatefulWidget {
+  const SelfEntryFinanceScreen({super.key});
 
+  @override
+  State<SelfEntryFinanceScreen> createState() => _SelfEntryFinanceScreenState();
+}
+
+class _SelfEntryFinanceScreenState extends State<SelfEntryFinanceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,12 +21,10 @@ class SelfEntryFinanceScreen extends StatelessWidget {
           Expanded(
             child: ListView.separated(
               itemBuilder: (_, index) => ListTile(
-                title: Text(
-                  '$index title',
-                ),
+                title: Text('${index + 1}'),
               ),
               separatorBuilder: (_, __) => const Divider(),
-              itemCount: 20,
+              itemCount: 8,
             ),
           ),
           Container(
@@ -27,7 +32,7 @@ class SelfEntryFinanceScreen extends StatelessWidget {
             child: const Column(
               children: [
                 BudgetEntryButtons(),
-                FinanceSummaryWidget(receivedMoney: 100, spentMoney: 9876)
+                FinanceSummaryWidget(receivedMoney: 1000, spentMoney: 9876)
               ],
             ),
           )

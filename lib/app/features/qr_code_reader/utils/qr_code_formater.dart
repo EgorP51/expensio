@@ -2,23 +2,25 @@ import 'package:flutter/foundation.dart';
 
 class QRCodeFormater {
   String? getPriceFromQRCode(String qrInfo) {
+    late final String? price;
     // no link format
     //'ABoAAAOrAAAAABUADaZsAATSwwJuKopEKZuy9bM=;0000003990;0307231352;3000762597;0000322741'
     RegExp notLinkFormatRegExp =
         RegExp(r'^[A-Za-z0-9]+=;[0-9]{10};[0-9]{10};[0-9]{10};[0-9]{10}$');
 
     if (notLinkFormatRegExp.hasMatch(qrInfo)) {
-      return _notLinkFormat(qrInfo);
+      price = _notLinkFormat(qrInfo);
+      //return _notLinkFormat(qrInfo);
     }
 
     // link format
     //https://cabinet.tax.gov.ua/cashregs/check?id=1112028941&fn=4000518028&date=20230629&sm=7.99
     RegExp linkFormatRegExp = RegExp(r'^https?:\/\/[^\s/$.?#].[^\s]*$');
     if (linkFormatRegExp.hasMatch(qrInfo)) {
-      return _linkFormat(qrInfo);
+      price = _linkFormat(qrInfo);
+      //return _linkFormat(qrInfo);
     }
-
-    return null;
+    return price;
   }
 
   String? _notLinkFormat(String qrInfo) {
