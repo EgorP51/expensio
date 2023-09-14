@@ -1,3 +1,4 @@
+import 'package:expensio/app/core/enums/enums.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'financial_record.freezed.dart';
@@ -11,6 +12,7 @@ class FinancialRecord with _$FinancialRecord {
     required String comment,
     required DateTime date,
     required bool isIncome,
+    required ExpenseType type,
   }) = _FinancialRecord;
 
   factory FinancialRecord.fromJson(Map<String, dynamic> json) =>

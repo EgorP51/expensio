@@ -24,6 +24,7 @@ mixin _$FinancialRecord {
   String get comment => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   bool get isIncome => throw _privateConstructorUsedError;
+  ExpenseType get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +38,12 @@ abstract class $FinancialRecordCopyWith<$Res> {
           FinancialRecord value, $Res Function(FinancialRecord) then) =
       _$FinancialRecordCopyWithImpl<$Res, FinancialRecord>;
   @useResult
-  $Res call({double amount, String comment, DateTime date, bool isIncome});
+  $Res call(
+      {double amount,
+      String comment,
+      DateTime date,
+      bool isIncome,
+      ExpenseType type});
 }
 
 /// @nodoc
@@ -57,6 +63,7 @@ class _$FinancialRecordCopyWithImpl<$Res, $Val extends FinancialRecord>
     Object? comment = null,
     Object? date = null,
     Object? isIncome = null,
+    Object? type = null,
   }) {
     return _then(_value.copyWith(
       amount: null == amount
@@ -75,6 +82,10 @@ class _$FinancialRecordCopyWithImpl<$Res, $Val extends FinancialRecord>
           ? _value.isIncome
           : isIncome // ignore: cast_nullable_to_non_nullable
               as bool,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as ExpenseType,
     ) as $Val);
   }
 }
@@ -87,7 +98,12 @@ abstract class _$$_FinancialRecordCopyWith<$Res>
       __$$_FinancialRecordCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double amount, String comment, DateTime date, bool isIncome});
+  $Res call(
+      {double amount,
+      String comment,
+      DateTime date,
+      bool isIncome,
+      ExpenseType type});
 }
 
 /// @nodoc
@@ -105,6 +121,7 @@ class __$$_FinancialRecordCopyWithImpl<$Res>
     Object? comment = null,
     Object? date = null,
     Object? isIncome = null,
+    Object? type = null,
   }) {
     return _then(_$_FinancialRecord(
       amount: null == amount
@@ -123,6 +140,10 @@ class __$$_FinancialRecordCopyWithImpl<$Res>
           ? _value.isIncome
           : isIncome // ignore: cast_nullable_to_non_nullable
               as bool,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as ExpenseType,
     ));
   }
 }
@@ -134,7 +155,8 @@ class _$_FinancialRecord implements _FinancialRecord {
       {required this.amount,
       required this.comment,
       required this.date,
-      required this.isIncome});
+      required this.isIncome,
+      required this.type});
 
   factory _$_FinancialRecord.fromJson(Map<String, dynamic> json) =>
       _$$_FinancialRecordFromJson(json);
@@ -147,10 +169,12 @@ class _$_FinancialRecord implements _FinancialRecord {
   final DateTime date;
   @override
   final bool isIncome;
+  @override
+  final ExpenseType type;
 
   @override
   String toString() {
-    return 'FinancialRecord(amount: $amount, comment: $comment, date: $date, isIncome: $isIncome)';
+    return 'FinancialRecord(amount: $amount, comment: $comment, date: $date, isIncome: $isIncome, type: $type)';
   }
 
   @override
@@ -162,12 +186,14 @@ class _$_FinancialRecord implements _FinancialRecord {
             (identical(other.comment, comment) || other.comment == comment) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.isIncome, isIncome) ||
-                other.isIncome == isIncome));
+                other.isIncome == isIncome) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, amount, comment, date, isIncome);
+  int get hashCode =>
+      Object.hash(runtimeType, amount, comment, date, isIncome, type);
 
   @JsonKey(ignore: true)
   @override
@@ -188,7 +214,8 @@ abstract class _FinancialRecord implements FinancialRecord {
       {required final double amount,
       required final String comment,
       required final DateTime date,
-      required final bool isIncome}) = _$_FinancialRecord;
+      required final bool isIncome,
+      required final ExpenseType type}) = _$_FinancialRecord;
 
   factory _FinancialRecord.fromJson(Map<String, dynamic> json) =
       _$_FinancialRecord.fromJson;
@@ -201,6 +228,8 @@ abstract class _FinancialRecord implements FinancialRecord {
   DateTime get date;
   @override
   bool get isIncome;
+  @override
+  ExpenseType get type;
   @override
   @JsonKey(ignore: true)
   _$$_FinancialRecordCopyWith<_$_FinancialRecord> get copyWith =>

@@ -4,6 +4,8 @@ import 'package:expensio/app/core/expensio_ui/theme/colors/expensio_colors.dart'
 import 'package:expensio/app/core/storage/sqflite/sqflite_storage.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/enums/enums.dart';
+
 class BudgetEntryButtons extends StatelessWidget {
   const BudgetEntryButtons({super.key});
 
@@ -26,6 +28,7 @@ class BudgetEntryButtons extends StatelessWidget {
                 comment: 'comment from db',
                 date: DateTime.now(),
                 isIncome: true,
+                type: ExpenseType.other
               );
               final database = SqfliteStorage();
               database.saveFinancialRecord(record);
