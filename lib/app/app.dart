@@ -1,5 +1,4 @@
 import 'package:expensio/app/core/navigation/app_router.dart';
-import 'package:expensio/app/features/qr_code_reader/presentation/screens/qr_code_reader_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

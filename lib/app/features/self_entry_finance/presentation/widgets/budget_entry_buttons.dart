@@ -1,5 +1,7 @@
+import 'package:expensio/app/core/data/models/financial_record.dart';
 import 'package:expensio/app/core/expensio_ui/buttons/expensio_button.dart';
 import 'package:expensio/app/core/expensio_ui/theme/colors/expensio_colors.dart';
+import 'package:expensio/app/core/storage/sqflite/sqflite_storage.dart';
 import 'package:flutter/material.dart';
 
 class BudgetEntryButtons extends StatelessWidget {
@@ -18,7 +20,16 @@ class BudgetEntryButtons extends StatelessWidget {
           ),
           const SizedBox(width: 5),
           ExpensioButton(
-            onPressed: () {},
+            onPressed: () {
+              final record = FinancialRecord(
+                amount: 44.44,
+                comment: 'comment from db',
+                date: DateTime.now(),
+                isIncome: true,
+              );
+              final database = SqfliteStorage();
+              database.saveFinancialRecord(record);
+            },
             text: 'spent',
             color: context.expensioColors.red,
           )

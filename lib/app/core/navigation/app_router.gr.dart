@@ -15,10 +15,10 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    QRCodeReaderRoute.name: (routeData) {
+    HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const QRCodeReaderScreen(),
+        child: const HomeScreen(),
       );
     },
     SelfEntryFinanceRoute.name: (routeData) {
@@ -27,25 +27,19 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SelfEntryFinanceScreen(),
       );
     },
-    HomeRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const HomeScreen(),
-      );
-    },
   };
 }
 
 /// generated route for
-/// [QRCodeReaderScreen]
-class QRCodeReaderRoute extends PageRouteInfo<void> {
-  const QRCodeReaderRoute({List<PageRouteInfo>? children})
+/// [HomeScreen]
+class HomeRoute extends PageRouteInfo<void> {
+  const HomeRoute({List<PageRouteInfo>? children})
       : super(
-          QRCodeReaderRoute.name,
+          HomeRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'QRCodeReaderRoute';
+  static const String name = 'HomeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -60,20 +54,6 @@ class SelfEntryFinanceRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SelfEntryFinanceRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [HomeScreen]
-class HomeRoute extends PageRouteInfo<void> {
-  const HomeRoute({List<PageRouteInfo>? children})
-      : super(
-          HomeRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'HomeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

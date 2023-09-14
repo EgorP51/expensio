@@ -1,6 +1,8 @@
 import 'package:auto_route/annotations.dart';
+import 'package:expensio/app/core/data/models/financial_record.dart';
 import 'package:expensio/app/features/self_entry_finance/presentation/widgets/budget_entry_buttons.dart';
 import 'package:expensio/app/features/self_entry_finance/presentation/widgets/finance_summary_widget.dart';
+import 'package:expensio/app/features/self_entry_finance/presentation/widgets/finance_tile.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage(name: 'SelfEntryFinanceRoute')
@@ -12,6 +14,16 @@ class SelfEntryFinanceScreen extends StatefulWidget {
 }
 
 class _SelfEntryFinanceScreenState extends State<SelfEntryFinanceScreen> {
+  final allFinancialRecords = List.generate(
+    9,
+    (index) => FinancialRecord(
+      amount: 4.0,
+      comment: 'comment',
+      date: DateTime.now(),
+      isIncome: true,
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,8 +32,8 @@ class _SelfEntryFinanceScreenState extends State<SelfEntryFinanceScreen> {
         children: [
           Expanded(
             child: ListView.separated(
-              itemBuilder: (_, index) => ListTile(
-                title: Text('${index + 1}'),
+              itemBuilder: (_, index) => FinanceTile(
+                financialRecord: allFinancialRecords[index],
               ),
               separatorBuilder: (_, __) => const Divider(),
               itemCount: 8,
