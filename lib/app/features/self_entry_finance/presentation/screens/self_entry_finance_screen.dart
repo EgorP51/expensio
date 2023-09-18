@@ -3,13 +3,9 @@ import 'dart:math';
 import 'package:auto_route/annotations.dart';
 import 'package:expensio/app/core/data/models/financial_record.dart';
 import 'package:expensio/app/core/utils/enums/enums.dart';
-import 'package:expensio/app/features/self_entry_finance/presentation/widgets/budget_entry_buttons.dart';
-import 'package:expensio/app/features/self_entry_finance/presentation/widgets/finance_summary_widget.dart';
 import 'package:expensio/app/features/self_entry_finance/presentation/widgets/finance_tile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 
 @RoutePage(name: 'SelfEntryFinanceRoute')
 class SelfEntryFinanceScreen extends StatefulWidget {

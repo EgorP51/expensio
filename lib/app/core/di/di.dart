@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:expensio/app/core/data/data_sources/monobank_datasource.dart';
 import 'package:expensio/app/core/data/finance_service.dart';
 import 'package:get_it/get_it.dart';
 
@@ -11,10 +12,15 @@ var dio = Dio(
     // receiveTimeout: AppConstants.dioDurationTimeout,
     // sendTimeout: AppConstants.dioDurationTimeout,
     // contentType: 'application/json; charset=utf-8',
-    // baseUrl: env.baseUrl,
+    baseUrl: 'https://api.monobank.ua/personal/statement',
+    // TODO: hide x-token!!!!
+    headers: {'X-Token': ''}
   ),
 );
 
+final FinanceService _financeService = FinanceService(dio);
+
 void configureDependencies() {
-  locator.registerSingleton<FinanceService>(FinanceService(dio));
+  locator.registerSingleton<MonobankDatasource>(
+      MonobankDatasourceImplementation(_financeService));
 }

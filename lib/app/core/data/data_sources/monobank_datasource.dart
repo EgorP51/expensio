@@ -2,7 +2,8 @@ import 'package:expensio/app/core/data/finance_service.dart';
 import 'package:expensio/app/core/data/models/monobank_finance.dart';
 
 abstract class MonobankDatasource {
-  Future<MonobankFinance> getFinancialStatement(Map<String, String> params);
+  Future<List<MonobankFinance>?> getFinancialStatement(
+      Map<String, String> params);
 }
 
 class MonobankDatasourceImplementation implements MonobankDatasource {
@@ -11,7 +12,10 @@ class MonobankDatasourceImplementation implements MonobankDatasource {
   MonobankDatasourceImplementation(this._financeService);
 
   @override
-  Future<MonobankFinance> getFinancialStatement(Map<String, dynamic> params) {
-    return _financeService.getMonobankData(params['account'], params['from']);
+  Future<List<MonobankFinance>?> getFinancialStatement(
+      Map<String, String> params) {
+    // TODO: check what to do
+    return _financeService
+        .getMonobankData('/${params['account']}/${params['from']}');
   }
 }

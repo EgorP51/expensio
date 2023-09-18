@@ -27,6 +27,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SelfEntryFinanceScreen(),
       );
     },
+    StatisticsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const StatisticsScreen(),
+      );
+    },
   };
 }
 
@@ -54,6 +60,20 @@ class SelfEntryFinanceRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SelfEntryFinanceRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [StatisticsScreen]
+class StatisticsRoute extends PageRouteInfo<void> {
+  const StatisticsRoute({List<PageRouteInfo>? children})
+      : super(
+          StatisticsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'StatisticsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

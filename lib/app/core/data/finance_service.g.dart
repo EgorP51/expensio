@@ -19,26 +19,20 @@ class _FinanceService implements FinanceService {
   String? baseUrl;
 
   @override
-  Future<MonobankFinance> getMonobankData(
-    int account,
-    String from,
-  ) async {
+  Future<List<MonobankFinance>?> getMonobankData(String url) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'param1': account,
-      r'param2': from,
-    };
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<MonobankFinance>(Options(
+        .fetch<List<dynamic>>(_setStreamType<List<MonobankFinance>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '{url}',
+              '${url}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -47,7 +41,10 @@ class _FinanceService implements FinanceService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = MonobankFinance.fromJson(_result.data!);
+    var value = _result.data
+        ?.map(
+            (dynamic i) => MonobankFinance.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 

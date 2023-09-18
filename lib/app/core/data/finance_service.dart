@@ -9,8 +9,5 @@ abstract class FinanceService {
   factory FinanceService(Dio dio) = _FinanceService;
 
   @GET('{url}')
-  Future<MonobankFinance> getMonobankData(
-    @Query('param1') int account,
-    @Query('param2') String from,
-  );
+  Future<List<MonobankFinance>?> getMonobankData(@Path('url') String url);
 }

@@ -48,6 +48,8 @@ dependencies:
   retrofit: ^4.0.1
   retrofit_generator: ^7.0.8
   get_it: ^7.6.4
+  equatable: ^2.0.5
+  syncfusion_flutter_charts: ^23.1.36
 
 dev_dependencies:
   flutter_test:
