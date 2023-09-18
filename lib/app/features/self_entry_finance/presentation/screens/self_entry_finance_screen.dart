@@ -47,7 +47,7 @@ class _SelfEntryFinanceScreenState extends State<SelfEntryFinanceScreen> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFFC1EAF1),
+        backgroundColor: Color(0xFFE1F8FD),
         // appBar: AppBar(
         //   backgroundColor: Colors.white,
         //   centerTitle: true,
@@ -81,8 +81,4 @@ class _SelfEntryFinanceScreenState extends State<SelfEntryFinanceScreen> {
       ),
     );
   }
-}
-
-String _currentDateTime() {
-  return '✨${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}✨';
 }
