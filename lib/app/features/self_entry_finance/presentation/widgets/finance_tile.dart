@@ -1,5 +1,5 @@
 import 'package:expensio/app/core/data/models/financial_record.dart';
-import 'package:expensio/app/core/enums/enums.dart';
+import 'package:expensio/app/core/utils/enums/enums.dart';
 import 'package:expensio/app/core/utils/time_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

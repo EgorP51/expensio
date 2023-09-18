@@ -1,4 +1,4 @@
-import 'package:expensio/app/core/enums/enums.dart';
+import 'package:expensio/app/core/utils/enums/enums.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'financial_record.freezed.dart';

@@ -2,6 +2,8 @@ import 'package:expensio/app/core/navigation/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'core/di/di.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -19,6 +21,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    configureDependencies();
     _appRouter = AppRouter();
   }
 

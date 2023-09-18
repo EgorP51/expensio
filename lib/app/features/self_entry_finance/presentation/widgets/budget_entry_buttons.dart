@@ -2,9 +2,9 @@ import 'package:expensio/app/core/data/models/financial_record.dart';
 import 'package:expensio/app/core/expensio_ui/buttons/expensio_button.dart';
 import 'package:expensio/app/core/expensio_ui/theme/colors/expensio_colors.dart';
 import 'package:expensio/app/core/storage/sqflite/sqflite_storage.dart';
+import 'package:expensio/app/core/utils/enums/enums.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/enums/enums.dart';
 
 class BudgetEntryButtons extends StatelessWidget {
   const BudgetEntryButtons({super.key});
