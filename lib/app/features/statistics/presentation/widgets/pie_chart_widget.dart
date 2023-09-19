@@ -1,6 +1,7 @@
 import 'package:expensio/app/core/utils/mss_code_utils.dart';
 import 'package:expensio/app/features/statistics/manager/statistics_bloc.dart';
 import 'package:expensio/app/features/statistics/presentation/widgets/slider_alert_dialog.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -13,15 +14,18 @@ class PieChartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Map<int, double> categorySumMap = {};
+    double sum = 0;
 
     for (var transaction in state.financialExpenses ?? []) {
       var mcc = transaction.mcc;
       var amount = (transaction.amount ?? 0) / 100;
 
-      if (categorySumMap.containsKey(mcc)) {
-        categorySumMap[mcc ?? 0] = categorySumMap[mcc]! + amount;
-      } else {
-        categorySumMap[mcc ?? 0] = amount;
+      if (amount < 0) {
+        if (categorySumMap.containsKey(mcc)) {
+          categorySumMap[mcc ?? 0] = categorySumMap[mcc]! + amount;
+        } else {
+          categorySumMap[mcc ?? 0] = amount;
+        }
       }
     }
 
@@ -31,11 +35,12 @@ class PieChartWidget extends StatelessWidget {
       chartData.add(ChartData(category, amount));
     });
 
-    chartData.sort((a, b) => a.y.compareTo(b.y));
+    //chartData.sort((a, b) => a.y.compareTo(b.y));
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('График категорий товаров'),
+        backgroundColor: CupertinoColors.systemOrange,
         actions: [
           GestureDetector(
             onTap: () {
@@ -83,6 +88,10 @@ class PieChartWidget extends StatelessWidget {
           const Text(
             'Суммы по категориям',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            'Текущий баланс: ${((state.financialExpenses?.first.balance ?? 0) / 100).toStringAsFixed(0)}',
+            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.normal),
           ),
           Expanded(
             child: ListView.builder(

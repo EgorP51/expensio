@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:expensio/app/features/home/presentation/home_screen.dart';
-import 'package:expensio/app/features/self_entry_finance/presentation/screens/self_entry_finance_screen.dart';
+import 'package:expensio/app/features/statistics/presentation/screens/self_entry_finance_screen.dart';
 import 'package:expensio/app/features/statistics/presentation/screens/statistics_screen.dart';
 
 part 'app_router.gr.dart';
@@ -15,7 +15,7 @@ class AppRouter extends _$AppRouter {
         path: '/',
         children: <AutoRoute>[
           AutoRoute(
-            page: SelfEntryFinanceRoute.page,
+            page: FinanceListRoute.page,
           ),
           AutoRoute(
             page: StatisticsRoute.page,

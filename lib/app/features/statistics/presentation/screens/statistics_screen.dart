@@ -10,9 +10,6 @@ class StatisticsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<StatisticsBloc>(
-      create: (context) => StatisticsBloc()..add(InitialEvent()),
-      child: const StatisticWidget(),
-    );
+    return  const StatisticWidget();
   }
 }

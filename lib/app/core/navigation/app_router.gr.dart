@@ -21,10 +21,10 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomeScreen(),
       );
     },
-    SelfEntryFinanceRoute.name: (routeData) {
+    FinanceListRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const SelfEntryFinanceScreen(),
+        child: const FinanceListScreen(),
       );
     },
     StatisticsRoute.name: (routeData) {
@@ -51,15 +51,15 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [SelfEntryFinanceScreen]
-class SelfEntryFinanceRoute extends PageRouteInfo<void> {
-  const SelfEntryFinanceRoute({List<PageRouteInfo>? children})
+/// [FinanceListScreen]
+class FinanceListRoute extends PageRouteInfo<void> {
+  const FinanceListRoute({List<PageRouteInfo>? children})
       : super(
-          SelfEntryFinanceRoute.name,
+          FinanceListRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'SelfEntryFinanceRoute';
+  static const String name = 'FinanceListRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

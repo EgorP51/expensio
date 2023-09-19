@@ -20,6 +20,8 @@ class MccCodeUtils {
         return 'Различные магазины и специальные розничные магазины';
       case 7832:
         return 'Кинотеатры';
+      case 5651:
+        return 'Одежда';
       case 7230:
         return 'Парикмахерские и салоны красоты';
       case 5813:
@@ -92,6 +94,8 @@ class MccCodeUtils {
       case 5732:
         return Colors.indigo;
       case 4111:
+        return Colors.pink;
+      case 5651:
         return Colors.pink;
       case 5977:
         return Colors.cyan;
