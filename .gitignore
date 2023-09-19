@@ -42,3 +42,11 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+lib/app/core/data/finance_service.g.dart
+lib/app/core/data/models/financial_record.freezed.dart
+lib/app/core/data/models/financial_record.g.dart
+lib/app/core/data/models/monobank_finance.freezed.dart
+lib/app/core/data/models/monobank_finance.g.dart
+lib/app/core/navigation/app_router.gr.dart
+lib/app/core/di/config.dart
