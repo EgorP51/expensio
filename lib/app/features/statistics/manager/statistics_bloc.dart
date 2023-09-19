@@ -21,6 +21,10 @@ class StatisticsBloc extends Bloc<StatisticsEvent, StatisticsState> {
         ),
       );
     });
+    on<ChangeDayCount>((event, emit) {
+      emit(state.copyWith(daysCount: event.daysCount));
+      add(InitialEvent());
+    });
   }
 
   Future<List<MonobankFinance>?> _initialEvent(
@@ -32,10 +36,15 @@ class StatisticsBloc extends Bloc<StatisticsEvent, StatisticsState> {
     try {
       return await _monobankDatasource.getFinancialStatement({
         'account': '0',
-        'from': '1694326281',
+        'from': '${getUnixTimeForPreviousDay(state.daysCount)}',
       });
     } catch (e) {
       return [];
     }
+  }
+
+  int getUnixTimeForPreviousDay(int n) {
+    DateTime targetDate = DateTime.now().subtract(Duration(days: n));
+    return targetDate.millisecondsSinceEpoch ~/ 1000;
   }
 }

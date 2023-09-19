@@ -8,3 +8,12 @@ abstract class StatisticsEvent extends Equatable {
 }
 
 class InitialEvent extends StatisticsEvent {}
+
+class ChangeDayCount extends StatisticsEvent {
+  final int daysCount;
+
+  const ChangeDayCount(this.daysCount);
+
+  @override
+  List<Object?> get props => [daysCount];
+}
