@@ -10,9 +10,9 @@ class StatisticWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<StatisticsBloc, StatisticsState>(
       builder: (context, state) {
-        if (state.isLoading == true) {
-          return const Center(child: CircularProgressIndicator());
-        }
+        // if (state.isLoading == true) {
+        //   return const Center(child: CircularProgressIndicator());
+        // }
         return PieChartWidget(state: state);
       },
       listener: (context, state) {},

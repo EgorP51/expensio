@@ -47,18 +47,24 @@ class PieChartWidget extends StatelessWidget {
         children: [
           Expanded(
             child: Center(
-              child: SfCircularChart(
-                series: <CircularSeries>[
-                  PieSeries<ChartData, String>(
-                    dataSource: state.chartData,
-                    pointColorMapper: (ChartData data, _) {
-                      return MccCodeUtils().getCategoryColor(data.x);
-                    },
-                    xValueMapper: (ChartData data, _) => data.x.toString(),
-                    yValueMapper: (ChartData data, _) => data.y,
-                  ),
-                ],
-              ),
+              child: (state.isLoading == true)
+                  ? CircleAvatar(
+                      radius: 110,
+                      backgroundColor: Colors.grey[300],
+                    )
+                  : SfCircularChart(
+                      series: <CircularSeries>[
+                        PieSeries<ChartData, String>(
+                          dataSource: state.chartData,
+                          pointColorMapper: (ChartData data, _) {
+                            return MccCodeUtils().getCategoryColor(data.x);
+                          },
+                          xValueMapper: (ChartData data, _) =>
+                              data.x.toString(),
+                          yValueMapper: (ChartData data, _) => data.y,
+                        ),
+                      ],
+                    ),
             ),
           ),
           const SizedBox(height: 20),
@@ -72,20 +78,52 @@ class PieChartWidget extends StatelessWidget {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: state.chartData?.length ?? 0,
+              itemCount:
+                  (state.isLoading == true) ? 4 : state.chartData?.length ?? 0,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(
-                      'Категория: ${MccCodeUtils().mccToDescription((state.chartData ?? [])[index].x)}'),
-                  subtitle: Text(
-                      'Сумма: ${((state.chartData ?? [])[index].y).toStringAsFixed(2)}'),
-                  leading: Icon(
-                    Icons.circle,
-                    color: MccCodeUtils().getCategoryColor(
-                      (state.chartData ?? [])[index].x,
+                if (state.isLoading == true) {
+                  return ListTile(
+                    title: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.grey[400],
+                        ),
+                        height: 15,
+                        width: 200,
+                      ),
                     ),
-                  ),
-                );
+                    subtitle: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.grey[300],
+                        ),
+                        height: 15,
+                        width: 170,
+                      ),
+                    ),
+                    leading: Icon(
+                      Icons.circle,
+                      color: Colors.grey[400],
+                    ),
+                  );
+                } else {
+                  return ListTile(
+                    title: Text(
+                        'Категория: ${MccCodeUtils().mccToDescription((state.chartData ?? [])[index].x)}'),
+                    subtitle: Text(
+                        'Сумма: ${((state.chartData ?? [])[index].y).toStringAsFixed(2)}'),
+                    leading: Icon(
+                      Icons.circle,
+                      color: MccCodeUtils().getCategoryColor(
+                        (state.chartData ?? [])[index].x,
+                      ),
+                    ),
+                  );
+                }
               },
             ),
           ),
