@@ -5,11 +5,11 @@ class MccCodeUtils {
   String mccToDescription(int mcc) {
     switch (mcc) {
       case 5411:
-        return 'Супермаркеты';
+        return 'Фора';
       case 5812:
         return 'Рестораны';
       case 5814:
-        return 'Фаст-фуд рестораны';
+        return 'Їжакохфе';
       case 5499:
         return 'Атб';
       case 5541:

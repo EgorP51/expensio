@@ -1,3 +1,4 @@
+import 'package:expensio/app/core/utils/chart_data/chart_data.dart';
 import 'package:expensio/app/core/utils/mss_code_utils.dart';
 import 'package:expensio/app/features/statistics/manager/statistics_bloc.dart';
 import 'package:expensio/app/features/statistics/presentation/widgets/slider_alert_dialog.dart';
@@ -13,30 +14,6 @@ class PieChartWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Map<int, double> categorySumMap = {};
-    double sum = 0;
-
-    for (var transaction in state.financialExpenses ?? []) {
-      var mcc = transaction.mcc;
-      var amount = (transaction.amount ?? 0) / 100;
-
-      if (amount < 0) {
-        if (categorySumMap.containsKey(mcc)) {
-          categorySumMap[mcc ?? 0] = categorySumMap[mcc]! + amount;
-        } else {
-          categorySumMap[mcc ?? 0] = amount;
-        }
-      }
-    }
-
-    final List<ChartData> chartData = [];
-
-    categorySumMap.forEach((category, amount) {
-      chartData.add(ChartData(category, amount));
-    });
-
-    //chartData.sort((a, b) => a.y.compareTo(b.y));
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('График категорий товаров'),
@@ -73,7 +50,7 @@ class PieChartWidget extends StatelessWidget {
               child: SfCircularChart(
                 series: <CircularSeries>[
                   PieSeries<ChartData, String>(
-                    dataSource: chartData,
+                    dataSource: state.chartData,
                     pointColorMapper: (ChartData data, _) {
                       return MccCodeUtils().getCategoryColor(data.x);
                     },
@@ -95,17 +72,17 @@ class PieChartWidget extends StatelessWidget {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: chartData.length,
+              itemCount: state.chartData?.length ?? 0,
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(
-                      'Категория: ${MccCodeUtils().mccToDescription(chartData[index].x)}'),
-                  subtitle:
-                      Text('Сумма: ${(chartData[index].y).toStringAsFixed(2)}'),
+                      'Категория: ${MccCodeUtils().mccToDescription((state.chartData ?? [])[index].x)}'),
+                  subtitle: Text(
+                      'Сумма: ${((state.chartData ?? [])[index].y).toStringAsFixed(2)}'),
                   leading: Icon(
                     Icons.circle,
                     color: MccCodeUtils().getCategoryColor(
-                      chartData[index].x,
+                      (state.chartData ?? [])[index].x,
                     ),
                   ),
                 );
@@ -116,19 +93,4 @@ class PieChartWidget extends StatelessWidget {
       ),
     );
   }
-}
-
-class TransactionData {
-  final int mccCategory;
-  final double amount;
-
-  TransactionData(this.mccCategory, this.amount);
-}
-
-class ChartData {
-  ChartData(this.x, this.y, [this.color]);
-
-  final int x;
-  final double y;
-  final Color? color;
 }
