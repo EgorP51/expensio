@@ -38,6 +38,8 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 
+.env
+
 # Android Studio will place build artifacts here
 /android/app/debug
 /android/app/profile
@@ -49,4 +51,3 @@ lib/app/core/data/models/financial_record.g.dart
 lib/app/core/data/models/monobank_finance.freezed.dart
 lib/app/core/data/models/monobank_finance.g.dart
 lib/app/core/navigation/app_router.gr.dart
-lib/app/core/di/config.dart
