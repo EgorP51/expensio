@@ -51,6 +51,7 @@ dependencies:
   equatable: ^2.0.5
   syncfusion_flutter_charts: ^23.1.36
   flutter_dotenv: ^5.1.0
+  flutter_native_splash: ^2.3.2
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +66,15 @@ dev_dependencies:
   build_runner: ^2.4.6
   freezed: ^2.3.5
   json_serializable: ^6.7.1
+
+
+flutter_native_splash:
+  image: assets/pepe.png
+  color: "#FFFFFF"
+  fill: true
+  android_12:
+    image: assets/pepe.png
+    fill: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
