@@ -1,134 +1,188 @@
 import 'package:flutter/material.dart';
 
-// TODO: maybe it better to create class with 3 field(code, description, color)
-class MccCodeUtils {
-  String mccToDescription(int mcc) {
-    switch (mcc) {
-      case 5411:
-        return 'Фора';
-      case 5812:
-        return 'Рестораны';
-      case 5814:
-        return 'Їжакохфе';
-      case 5499:
-        return 'Атб';
-      case 5541:
-        return 'Заправочные станции';
-      case 5912:
-        return 'Аптеки';
-      case 5999:
-        return 'Различные магазины и специальные розничные магазины';
-      case 7832:
-        return 'Кинотеатры';
-      case 5651:
-        return 'Одежда';
-      case 7230:
-        return 'Парикмахерские и салоны красоты';
-      case 5813:
-        return 'Бары и ночные клубы';
-      case 5977:
-        return 'Ювелирные магазины';
-      case 4814:
-        return 'Пополнение мобильного';
-      case 6536:
-        return 'Перевод мне на карту';
-      case 5941:
-        return 'Спортивные товары';
-      case 7998:
-        return 'Зверинцы и морские парки';
-      case 5441:
-        return 'Кондитерские';
-      case 5811:
-        return 'Рестораны, уличная еда';
-      case 4111:
-        return 'Транспорт';
-      case 5976:
-        return 'Оптовая торговля часами и ювелирными изделиями';
-      case 5412:
-        return 'Магазины пищевых продуктов и супермаркеты';
-      case 5944:
-        return 'Часовые магазины, часы, ювелирные украшения';
-      case 5943:
-        return 'Кпи принт';
-      case 5732:
-        return 'Цифровые товары - загрузки';
-      case 5462:
-        return 'Булочные';
-      case 4112:
-        return 'Укрзалізниця';
-      case 5310:
-        return 'Авророподобное';
-      case 5995:
-        return 'Заведения для игр и азартных игр';
-      case 4829:
-        return 'Переводы';
-      default:
-        return 'Неизвестная категория($mcc)';
-    }
-  }
+class MccCategory {
+  final int code;
+  final String description;
+  final Color color;
 
-  Color getCategoryColor(int mcc) {
-    switch (mcc) {
-      case 5411:
-        return Colors.blue;
-      case 5812:
-        return Colors.red;
-      case 4112:
-        return Colors.red;
-      case 5814:
-        return Colors.amber;
-      case 5541:
-        return Colors.orange;
-      case 5912:
-        return Colors.purple;
-      case 5999:
-        return Colors.yellow;
-      case 5310:
-        return Colors.yellow;
-      case 7832:
-        return Colors.teal;
-      case 6536:
-        return Colors.teal;
-      case 7230:
-        return Colors.indigo;
-      case 5732:
-        return Colors.indigo;
-      case 4111:
-        return Colors.pink;
-      case 5651:
-        return Colors.pink;
-      case 5977:
-        return Colors.cyan;
-      case 5941:
-        return Colors.brown;
-      case 5691:
-        return Colors.grey;
-      case 5811:
-        return Colors.deepPurple;
-      case 4814:
-        return Colors.deepPurple;
-      case 5462:
-        return Colors.lime;
-      case 5412:
-        return Colors.lightBlue;
-      case 5944:
-        return Colors.deepOrange;
-      case 5499:
-        return Colors.deepOrange;
-      case 5943:
-        return Colors.lightGreen;
-      case 4829:
-        return Colors.green;
-      case 5816:
-        return Colors.pinkAccent;
-      case 5995:
-        return Colors.blueGrey;
-      case 7998:
-        return Colors.lightGreen;
-      case 5441:
-        return Colors.brown;
-      default:
-        return Colors.black;
-    }
+  MccCategory(this.code, this.description, this.color);
+}
+
+class MccCodeUtils {
+  List<MccCategory> mccCategories = [
+    MccCategory(
+      5411,
+      'Фора',
+      Colors.blue,
+    ),
+    MccCategory(
+      5812,
+      'Рестораны',
+      Colors.red,
+    ),
+    MccCategory(
+      4214,
+      'Нова пошта(доставка)',
+      Colors.red,
+    ),
+    MccCategory(
+      6538,
+      'Нова пошта(післяоплата)',
+      Colors.red,
+    ),
+    MccCategory(
+      5814,
+      'Кохфе/пузатка',
+      Colors.amber,
+    ),
+    MccCategory(
+      5499,
+      'Атб',
+      Colors.deepOrange,
+    ),
+    MccCategory(
+      5541,
+      'Заправочные станции',
+      Colors.orange,
+    ),
+    MccCategory(
+      5912,
+      'Аптеки',
+      Colors.purple,
+    ),
+    MccCategory(
+      5999,
+      'Различные магазины и специальные розничные магазины',
+      Colors.yellow,
+    ),
+    MccCategory(
+      7832,
+      'Кинотеатры',
+      Colors.teal,
+    ),
+    MccCategory(
+      5651,
+      'Одежда',
+      Colors.pink,
+    ),
+    MccCategory(
+      7230,
+      'Парикмахерские и салоны красоты',
+      Colors.indigo,
+    ),
+    MccCategory(
+      5813,
+      'Бары и ночные клубы',
+      Colors.deepPurple,
+    ),
+    MccCategory(
+      5977,
+      'Ювелирные магазины',
+      Colors.cyan,
+    ),
+    MccCategory(
+      4814,
+      'Пополнение мобильного',
+      Colors.deepPurple,
+    ),
+    MccCategory(
+      6536,
+      'Перевод мне на карту',
+      Colors.teal,
+    ),
+    MccCategory(
+      5941,
+      'Спортивные товары',
+      Colors.brown,
+    ),
+    MccCategory(
+      7998,
+      'Зверинцы и морские парки',
+      Colors.lightGreen,
+    ),
+    MccCategory(
+      5441,
+      'Кондитерские',
+      Colors.brown,
+    ),
+    MccCategory(
+      5811,
+      'Рестораны, уличная еда',
+      Colors.deepPurple,
+    ),
+    MccCategory(
+      4111,
+      'Транспорт',
+      Colors.pink,
+    ),
+    MccCategory(
+      5976,
+      'Оптовая торговля часами и ювелирными изделиями',
+      Colors.indigo,
+    ),
+    MccCategory(
+      5412,
+      'Магазины пищевых продуктов и супермаркеты',
+      Colors.lightBlue,
+    ),
+    MccCategory(
+      5944,
+      'Часовые магазины, часы, ювелирные украшения',
+      Colors.deepOrange,
+    ),
+    MccCategory(
+      5943,
+      'Творчество',
+      Colors.lightGreen,
+    ),
+    MccCategory(
+      5732,
+      'Цифровые товары',
+      Colors.indigo,
+    ),
+    MccCategory(
+      5722,
+      'Цифровые товары',
+      Colors.indigo,
+    ),
+    MccCategory(
+      5462,
+      'Булочные',
+      Colors.lime,
+    ),
+    MccCategory(
+      4112,
+      'Укрзалізниця',
+      Colors.red,
+    ),
+    MccCategory(
+      5310,
+      'Авророподобное',
+      Colors.yellow,
+    ),
+    MccCategory(
+      5399,
+      'Аврора',
+      Colors.yellow,
+    ),
+    MccCategory(
+      5995,
+      'Заведения для игр и азартных игр',
+      Colors.blueGrey,
+    ),
+    MccCategory(
+      4829,
+      'Переводы',
+      Colors.green,
+    ),
+  ];
+
+  MccCategory getMccCategory(int mcc) {
+    MccCategory? category = mccCategories.firstWhere(
+      (category) => category.code == mcc,
+      orElse: () =>
+          MccCategory(mcc, 'Неизвестная категория($mcc)', Colors.grey[400]!),
+    );
+    return category;
   }
 }

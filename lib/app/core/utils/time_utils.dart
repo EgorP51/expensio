@@ -11,4 +11,15 @@ class TimeUtils {
       return formatDateTime(dateTime);
     }
   }
+
+  int getUnixTimeForPreviousDay(int n) {
+    DateTime targetDate = DateTime.now().subtract(Duration(days: n));
+
+    if (n == 0) {
+      DateTime today = DateTime.now();
+      targetDate = DateTime(today.year, today.month, today.day);
+    }
+
+    return targetDate.millisecondsSinceEpoch ~/ 1000;
+  }
 }

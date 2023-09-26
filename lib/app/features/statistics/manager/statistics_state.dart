@@ -4,26 +4,34 @@ class StatisticsState extends Equatable {
   final List<MonobankFinance>? financialExpenses;
   final bool? isLoading;
   final int daysCount;
-  final List<ChartData>? chartData;
+  final double periodicExpenses;
+  final List<ChartData>? allChartData;
+  final List<ChartData>? dailyChartData;
 
   const StatisticsState({
     this.financialExpenses,
     this.isLoading = false,
-    this.daysCount = 7,
-    this.chartData,
+    this.daysCount = Constants.defaultDaysNumber,
+    this.periodicExpenses = 0.0,
+    this.allChartData,
+    this.dailyChartData,
   });
 
   StatisticsState copyWith({
     List<MonobankFinance>? financialExpenses,
     bool? isLoading,
     int? daysCount,
-    List<ChartData>? chartData,
+    double? periodicExpenses,
+    List<ChartData>? allChartData,
+    List<ChartData>? dailyChartData,
   }) {
     return StatisticsState(
       financialExpenses: financialExpenses ?? this.financialExpenses,
       isLoading: isLoading ?? this.isLoading,
       daysCount: daysCount ?? this.daysCount,
-      chartData: chartData ?? this.chartData,
+      allChartData: allChartData ?? this.allChartData,
+      dailyChartData: dailyChartData ?? this.dailyChartData,
+      periodicExpenses: periodicExpenses ?? this.periodicExpenses,
     );
   }
 
@@ -33,7 +41,9 @@ class StatisticsState extends Equatable {
       financialExpenses,
       isLoading,
       daysCount,
-      chartData,
+      allChartData,
+      dailyChartData,
+      periodicExpenses,
     ];
   }
 }

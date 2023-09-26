@@ -64,16 +64,15 @@ class ExpenseListWidget extends StatelessWidget {
                     itemBuilder: (_, index) {
                       if (state.financialExpenses != null) {
                         final item = state.financialExpenses![index];
-
                         final category =
-                            MccCodeUtils().mccToDescription(item.mcc ?? 0);
+                            MccCodeUtils().getMccCategory(item.mcc ?? 0);
+
                         final sum =
                             ((item.amount ?? 0) / 100).toStringAsFixed(2);
-                        final iconColor =
-                            MccCodeUtils().getCategoryColor(item.mcc ?? 0);
+                        final iconColor = category.color;
 
                         return ListTile(
-                          title: Text('Категория: $category'),
+                          title: Text('${item.description}'),
                           subtitle: Text(TimeUtils()
                               .dateTimeFromMilliseconds(item.time ?? 0)),
                           leading: Icon(Icons.circle, color: iconColor),
